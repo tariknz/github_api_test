@@ -12,7 +12,7 @@ angular.module('myApp.services', ['myApp.config', 'myApp.utils'])
 		getReposForUser: function(username) {
 			var deferred = $q.defer();
 			$http({
-				url: webServiceURL + '/repos/octokit/octokit.rb',
+				url: webServiceURL + '/users/' + username + '/repos',
 				method: "GET",
 				params: { }
 			}).

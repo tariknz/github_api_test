@@ -3,7 +3,17 @@
 		<div>
 			<div class="row">
 				<div class="span12">
-					<h4>{{test}}</h4>
+					<h4>Search user repositories:</h4>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span12">
+					<div class="form-inline">
+						<input type="text" class="span4" ng-model="username" />
+						<button class="btn" ng-click="getReposForUser()">Fetch</button>
+						<p class="help-inline">{{status}}</p>
+						<img src="img/loader.gif" class="loader-icon" />
+					</div>
 				</div>
 			</div>
 		</div>
@@ -11,6 +21,15 @@
 		<div class="row">
 			<div class="span12">
 				<br /><br />
+				<div class="repos">
+					<ul class="repos-list" ng-repeat="repo in repos">
+						<li class="">
+							<div class="row">
+								<div class="span10"><strong>{{repo.name}}: </strong>{{repo.git_url}}</div>
+							</div>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
