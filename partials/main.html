@@ -24,7 +24,7 @@
 				<div class="repos">
 					<ul class="repos-list" ng-repeat="repo in repos">
 						<li class="repos-list">
-							<strong>{{repo.name}}</strong>
+							<a ng-click="getRepoLanguagesForUser(repo.owner.login, repo.name)"><strong>{{repo.name}}</strong></a>
 							<p class="repo-desc">{{repo.description}}</p>
 						</li>
 					</ul>

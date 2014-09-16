@@ -13,8 +13,22 @@ angular.module('myApp.services', ['myApp.config', 'myApp.utils'])
 			var deferred = $q.defer();
 			$http({
 				url: webServiceURL + '/users/' + username + '/repos',
-				method: "GET",
-				params: { }
+				method: "GET"
+			}).
+			success(function(data, status) {
+				deferred.resolve(data);
+			}).error(function(data, status){
+				handleError(status);
+				deferred.reject(data);
+			});
+
+			return deferred.promise;
+		},
+		getRepoLanguagesForUser: function(username, repo) {
+			var deferred = $q.defer();
+			$http({
+				url: webServiceURL + '/repos/' + username + '/' + repo + '/languages',
+				method: "GET"
 			}).
 			success(function(data, status) {
 				deferred.resolve(data);
@@ -25,5 +39,6 @@ angular.module('myApp.services', ['myApp.config', 'myApp.utils'])
 
 			return deferred.promise;
 		}
+
 	}
 }]);

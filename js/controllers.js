@@ -15,4 +15,11 @@ angular.module('myApp.controllers', ['myApp.services', 'myApp.config'])
 			});
 		}
 
+		$scope.getRepoLanguagesForUser = function(username, reponame){
+			github.getRepoLanguagesForUser(username, reponame).then(function(data){
+				console.log(data);
+				$scope.languages = data;
+			});
+		}
+
 	}]);
