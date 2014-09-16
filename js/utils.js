@@ -13,10 +13,6 @@ angular.module('myApp.utils', [])
 			enableForm: function (){
 				$(document).find('input, textarea, button, select').removeAttr('disabled');
 				showLoader(false);
-			},
-
-			convertLanguagesDataToKeyValues: function(languages){
-				
 			}
 		};
 

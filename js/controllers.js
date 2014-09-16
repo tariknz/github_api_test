@@ -13,13 +13,15 @@ angular.module('myApp.controllers', ['myApp.services', 'myApp.config', 'nvd3Char
 		$scope.repos = [];
 
 		$scope.getReposForUser = function(){
+			utils.disableForm();
 			github.getReposForUser($scope.username).then(function(data){
 				console.log(data);
 				$scope.repos = data;
+				utils.enableForm();
 			});
 		}
 
-		
+
 		$scope.getReposForUser();
 
 	}])
@@ -32,14 +34,15 @@ angular.module('myApp.controllers', ['myApp.services', 'myApp.config', 'nvd3Char
 		$scope.pieChartData = [];
 
 		$scope.getRepoLanguagesForUser = function(){
+			utils.disableForm();
 			github.getRepoLanguagesForUser($scope.username, $scope.repo).then(function(data){
-				console.log(data);
 				$scope.languages = data;
 
 				for (var key in $scope.languages) {
 					console.log(key + ' ' + $scope.languages[key]);
 					$scope.pieChartData.push({"key": key, "y": $scope.languages[key]});
 				};
+				utils.enableForm();
 			});
 		}
 

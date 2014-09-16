@@ -9,18 +9,20 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-
+					<br />
+					<img src="img/loader.gif" class="loader-icon" />
 					<!-- graph -->
 					<nvd3-pie-chart ng-if="languages"
 						data="pieChartData"
-						id="exampleId"
+						id="piechart"
 						width="550"
 						height="350"
 						x="xFunction()"
 						y="yFunction()"
 						showLabels="true"
 						showLegend="true"
-						toolTips="true"
+						showValues="true"
+						labelType="value"
 						pieLabelsOutside="false"
 						>
 						<svg></svg>
