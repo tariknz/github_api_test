@@ -10,12 +10,14 @@ angular.module('myApp', ['ngRoute', 'myApp.services', 'myApp.directives', 'myApp
 				controller: 'MainCtrl'
 			}
 		)
+		//lets you auto load a username by passing a username param (used when clicking home from details page)
 		.when('/:username',
 			{
 				templateUrl: '/partials/main.html',
 				controller: 'MainCtrl'
 			}
 		)
+		//for the details view
 		.when('/:username/:repo',
 			{
 				templateUrl: '/partials/detail.html',

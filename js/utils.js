@@ -1,10 +1,11 @@
 'use strict';
 
-/* Services */
+/* Utilities */
 
 angular.module('myApp.utils', [])
 	.factory('utils', function () {
 		return {
+			//disables form items
 			disableForm: function (){
 				$(document).find('input, textarea, button, select').attr('disabled','disabled');
 				showLoader(true);
@@ -17,6 +18,7 @@ angular.module('myApp.utils', [])
 		};
 
 		function showLoader (show) {
+			//shows or hides the loader icon (if used)
 			if(show)
 				$('.loader-icon').show();
 			else
