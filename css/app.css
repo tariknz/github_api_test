@@ -1,0 +1,44 @@
+/* app css stylesheet */
+
+[ng-cloak] {
+	display: none;
+}
+
+body {
+	background-image: url(../img/bg.png);
+	background-color: #333
+}
+
+.footer, .menu {
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+.footer {
+	 position:fixed;
+	 bottom:0;
+
+}
+
+.content-container {
+	background-color: #fff;
+	padding: 20px;
+     margin-top: 30px;
+     margin-bottom: 30px;
+}
+
+.no-space{
+	margin-left: 0;
+}
+
+.loader-icon {
+	margin-left: 20px;
+	display: none;
+}
+
+.container {
+	-webkit-box-shadow: inset 1px 1px 23px 2px rgba(0,0,0,0.26);
+	-moz-box-shadow: inset 1px 1px 23px 2px rgba(0,0,0,0.26);
+	box-shadow: inset 1px 1px 23px 2px rgba(0,0,0,0.26);
+}
