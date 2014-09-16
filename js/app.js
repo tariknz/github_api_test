@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp', ['ngRoute', 'myApp.services', 'myApp.directives', 'myApp.controllers', 'myApp.config', 'myApp.utils'])
+angular.module('myApp', ['ngRoute', 'myApp.services', 'myApp.directives', 'myApp.controllers', 'myApp.config', 'myApp.utils', 'nvd3ChartDirectives'])
 	.config(['$routeProvider', '$locationProvider', function($routeProvider,  $locationProvider) {
 		//$locationProvider.html5Mode(true);
 		$routeProvider
