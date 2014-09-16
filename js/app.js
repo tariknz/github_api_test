@@ -6,16 +6,15 @@ angular.module('myApp', ['ngRoute', 'myApp.services', 'myApp.directives', 'myApp
 		$routeProvider
 		.when('/',
 			{
-				templateUrl: '/partials/Main.html',
+				templateUrl: '/partials/main.html',
 				controller: 'MainCtrl'
 			}
 		)
-
-		$routeProvider.otherwise({redirectTo: '/'});
-	}])
-	.run(function($rootScope, $templateCache) {
-		//don't cache partials - reload them when changed
-		$rootScope.$on('$viewContentLoaded', function() {
-			$templateCache.removeAll();
-		});
-	});
+		.when('/:username/:repo',
+			{
+				templateUrl: '/partials/detail.html',
+				controller: 'DetailCtrl'
+			}
+		)
+		.otherwise({redirectTo: '/'});
+	}]);

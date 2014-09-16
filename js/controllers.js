@@ -8,32 +8,36 @@ angular.module('myApp.controllers', ['myApp.services', 'myApp.config', 'nvd3Char
 		$scope.username = 'twitter';
 		$scope.repos = [];
 
-		$scope.exampleData = [{
-			key: "One",
-			y: 5
-		}, {
-			key: "Two",
-			y: 2
-		}, {
-			key: "Three",
-			y: 9
-		}, {
-			key: "Four",
-			y: 7
-		}, {
-			key: "Five",
-			y: 4
-		}, {
-			key: "Six",
-			y: 3
-		}, {
-			key: "Seven",
-			y: 9
-		}];
+		$scope.getReposForUser = function(){
+			github.getReposForUser($scope.username).then(function(data){
+				console.log(data);
+				$scope.repos = data;
+			});
+		}
 
+	}])
+	
+	.controller('DetailCtrl', ['$scope','utils', 'github', '$routeParams', function($scope, utils, github, $routeParams) {
+	
+		$scope.username = $routeParams.username;
+		$scope.repo = $routeParams.repo;
+		$scope.languages = null;
+
+
+		$scope.getRepoLanguagesForUser = function(){
+			github.getRepoLanguagesForUser($scope.username, $scope.repo).then(function(data){
+				console.log(data);
+				$scope.languages = data;
+			});
+		}
+
+
+		$scope.getRepoLanguagesForUser();
+
+		var pieChartDataJson = [];
 
 		$scope.pieChartData = function(){
-			var pieChartDataJson = [];
+
 			for (var key in $scope.languages) {
 				console.log(key + ' ' + $scope.languages[key]);
 				pieChartDataJson.push({"key": key, "y": $scope.languages[key]});
@@ -62,20 +66,6 @@ angular.module('myApp.controllers', ['myApp.services', 'myApp.config', 'nvd3Char
 			return function(d) {
 				return d.key;
 			}
-		}
-
-		$scope.getReposForUser = function(){
-			github.getReposForUser($scope.username).then(function(data){
-				console.log(data);
-				$scope.repos = data;
-			});
-		}
-
-		$scope.getRepoLanguagesForUser = function(username, reponame){
-			github.getRepoLanguagesForUser(username, reponame).then(function(data){
-				console.log(data);
-				$scope.languages = data;
-			});
 		}
 
 	}]);

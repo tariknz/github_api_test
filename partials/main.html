@@ -24,21 +24,8 @@
 				<div class="repos">
 					<ul class="repos-list" ng-repeat="repo in repos">
 						<li class="repos-list">
-							<a ng-click="getRepoLanguagesForUser(repo.owner.login, repo.name)"><strong>{{repo.name}}</strong></a>
+							<a ng-href="#/{{repo.owner.login}}/{{repo.name}}/"><strong>{{repo.name}}</strong></a>
 							<p class="repo-desc">{{repo.description}}</p>
-
-							<!-- graph -->
-							<nvd3-pie-chart
-						    	data="pieChartData()"
-						        id="exampleId"
-						        width="550"
-						        height="350"
-						        x="xFunction()"
-						        y="yFunction()"
-						        showLabels="true">
-						        <svg></svg>
-						    </nvd3-pie-chart>
-
 						</li>
 					</ul>
 				</div>
