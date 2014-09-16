@@ -22,29 +22,21 @@ angular.module('myApp.controllers', ['myApp.services', 'myApp.config', 'nvd3Char
 		$scope.username = $routeParams.username;
 		$scope.repo = $routeParams.repo;
 		$scope.languages = null;
-
+		$scope.pieChartData = [];
 
 		$scope.getRepoLanguagesForUser = function(){
 			github.getRepoLanguagesForUser($scope.username, $scope.repo).then(function(data){
 				console.log(data);
 				$scope.languages = data;
+
+				for (var key in $scope.languages) {
+					console.log(key + ' ' + $scope.languages[key]);
+					$scope.pieChartData.push({"key": key, "y": $scope.languages[key]});
+				};
 			});
 		}
 
-
 		$scope.getRepoLanguagesForUser();
-
-		var pieChartDataJson = [];
-
-		$scope.pieChartData = function(){
-
-			for (var key in $scope.languages) {
-				console.log(key + ' ' + $scope.languages[key]);
-				pieChartDataJson.push({"key": key, "y": $scope.languages[key]});
-			};
-
-			return pieChartDataJson;
-		}
 
 		//{Shell: 94173, Java: 4323129, C: 3546, C++: 323853}
 
