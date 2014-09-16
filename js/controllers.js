@@ -47,7 +47,6 @@ angular.module('myApp.controllers', ['myApp.services', 'myApp.config', 'nvd3Char
 
 				//this reformats the json to the format supported by the graphing utility (NVD3)
 				for (var key in $scope.languages) {
-					console.log(key + ' ' + $scope.languages[key]);
 					$scope.pieChartData.push({"key": key, "y": $scope.languages[key]});
 				};
 
