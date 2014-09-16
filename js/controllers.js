@@ -3,9 +3,13 @@
 /* Controllers */
 
 angular.module('myApp.controllers', ['myApp.services', 'myApp.config', 'nvd3ChartDirectives'])
-	.controller('MainCtrl', ['$scope', 'utils', 'github', function($scope, utils, github) {
+	.controller('MainCtrl', ['$scope', 'utils', 'github', '$routeParams', function($scope, utils, github, $routeParams) {
 
-		$scope.username = 'twitter';
+		if($routeParams.username)
+			$scope.username = $routeParams.username;
+		else
+			$scope.username = 'twitter';
+
 		$scope.repos = [];
 
 		$scope.getReposForUser = function(){
@@ -14,6 +18,9 @@ angular.module('myApp.controllers', ['myApp.services', 'myApp.config', 'nvd3Char
 				$scope.repos = data;
 			});
 		}
+
+		
+		$scope.getReposForUser();
 
 	}])
 	

@@ -10,6 +10,12 @@ angular.module('myApp', ['ngRoute', 'myApp.services', 'myApp.directives', 'myApp
 				controller: 'MainCtrl'
 			}
 		)
+		.when('/:username',
+			{
+				templateUrl: '/partials/main.html',
+				controller: 'MainCtrl'
+			}
+		)
 		.when('/:username/:repo',
 			{
 				templateUrl: '/partials/detail.html',
